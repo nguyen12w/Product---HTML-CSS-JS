@@ -82,7 +82,11 @@
       });
 
       buyNow.addEventListener('click', function () {
-        alert(`Mày muốn mua ${result} đôi đúng chứ?`);
+        var valueSize = document.querySelector('.active-size').innerText;
+        var colorValue = document.querySelector('.active-color').value;
+        alert(
+          `Mày muốn mua ${result} đôi, size ${valueSize}, màu ${colorValue} đúng chứ?`
+        );
         alert('Không Bán');
       });
 
