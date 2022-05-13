@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.scss" />
+
+    <!-- icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="card">
+      <!-- card-items -->
+      <div class="card-heart">
+        <i class="bx bx-heart"></i>
+      </div>
+      <div class="card-cart">
+        <i class="bx bx-cart-alt">
+          <div class="cart-value">0</div>
+        </i>
+      </div>
+
+      <!-- card-img -->
+      <div class="card-img">
+        <img
+          src="https://www.nodemy.vn/projects/html-css-js/product-card/Nike%20Zoom%20KD%2012.png"
+        />
+      </div>
+
+      <!-- card-title -->
+      <div class="card-title">
+        <h2 class="title-name">Nike Zoom KD 12</h2>
+        <h2 class="title-price">$99</h2>
+      </div>
+
+      <!-- card-content -->
+      <div class="card-content">
+        <div class="card-size">
+          <h3>Size:</h3>
+          <span> 6 </span>
+          <span class="active-size"> 7 </span>
+          <span> 8 </span>
+          <span> 9 </span>
+        </div>
+
+        <div class="card-color">
+          <h3>Color:</h3>
+          <div class="color color_green active-color"></div>
+          <div class="color color_red"></div>
+          <div class="color color_black"></div>
+        </div>
+
+        <div class="card-button">
+          <button class="buy-now">Buy Now</button>
+          <button class="buy-cart">Buy Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var heart = document.querySelector('.card-heart i');
+      var cart = document.querySelector('.card-cart i');
+      var cartValue = document.querySelector(
+        '.card-cart i .cart-value'
+      ).innerText;
+      var buyNow = document.querySelector('.card-button .buy-now');
+      var buyCart = document.querySelector('.card-button .buy-cart');
+
+      var activeColor = document.querySelectorAll('.card-color div');
+      var activeSize = document.querySelectorAll('.card-size span');
+
+      heart.addEventListener('click', function () {
+        this.classList.toggle('bxs-heart');
+      });
+
+      var result = 0;
+      cart.addEventListener('click', function () {
+        result += 1;
+        document.querySelector('.cart-value').innerText = result;
+      });
+
+      buyNow.addEventListener('click', function () {
+        alert(`Mày muốn mua ${result} đôi đúng chứ?`);
+        alert('Không Bán');
+      });
+
+      buyCart.addEventListener('click', function () {
+        result += 1;
+        document.querySelector('.cart-value').innerText = result;
+      });
+
+      function removeSize() {
+        for (let i = 0; i < 4; i++) {
+          activeSize[i].addEventListener('click', function (e) {
+            for (let j = 0; j < 4; j++)
+              activeSize[j].classList.remove('active-size');
+            this.classList.add('active-size');
+          });
+        }
+      }
+
+      function removeColor() {
+        for (let i = 0; i < 3; i++) {
+          activeColor[i].addEventListener('click', function (e) {
+            for (let j = 0; j < 3; j++)
+              activeColor[j].classList.remove('active-color');
+            this.classList.add('active-color');
+          });
+        }
+      }
+
+      removeSize();
+      removeColor();
+    </script>
+  </body>
+</html>
